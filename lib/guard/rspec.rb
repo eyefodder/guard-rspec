@@ -29,16 +29,12 @@ module Guard
       runner.reload
     end
 
-    def run_on_modifications(paths)
-      run_rspec(paths)
-    end
-
-    private
-
-    def run_rspec(paths)
+    def run_on_changes(paths)
       return false if paths.empty?
       _throw_if_failed { runner.run(paths) }
     end
+
+    private
 
     def _throw_if_failed
       throw :task_has_failed unless yield
