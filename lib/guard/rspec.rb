@@ -30,11 +30,16 @@ module Guard
     end
 
     def run_on_modifications(paths)
-      return false if paths.empty?
-      _throw_if_failed { runner.run(paths) }
+      throw :pooface
+      run_rspec(paths)
     end
 
     private
+
+    def run_rspec(paths)
+      return false if paths.empty?
+      _throw_if_failed { runner.run(paths) }
+    end
 
     def _throw_if_failed
       throw :task_has_failed unless yield
