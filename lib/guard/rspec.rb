@@ -30,7 +30,6 @@ module Guard
     end
 
     def run_on_modifications(paths)
-      throw :pooface
       run_rspec(paths)
     end
 
